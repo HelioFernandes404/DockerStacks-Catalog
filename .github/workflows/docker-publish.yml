@@ -67,14 +67,16 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
-      - name: cd GestaoMentoria
+      - name: ls
+        run: ls
+
+      - name: cd .\gestao-mentoria-backend\
         run: cd GestaoMentoria
 
       - name: pwd
         run: pwd
-        
-      - name: ls
-        run: ls
+
+
     
 
       # Build and push Docker image with Buildx (don't push on PR)
