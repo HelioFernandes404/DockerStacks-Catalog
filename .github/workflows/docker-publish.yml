@@ -68,7 +68,7 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
       - name: ls -pwd
-        run: pwd
+        run: ../../ && ls -pwd
 
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
