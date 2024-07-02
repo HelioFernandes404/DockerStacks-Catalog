@@ -26,10 +26,10 @@ public class LoginsController : ControllerBase
             return NotFound(new { message = "Email não cadastrado. Tente Novamente" });
         }
 
-        var token = await _userManager.GeneratePasswordResetTokenAsync(usuario);
-
+        //var token = await _userManager.GeneratePasswordResetTokenAsync(usuario);
+        var token = Guid.NewGuid().ToString();
         var link = Url.Action("ResetarSenha", "Account", new { token }, Request.Scheme);
-        await _emailService.SendEmailAsync(usuario.Email, "Recuperar Senha", $"Clique no link para recuperar sua senha: {link}");
+        //await _emailService.SendEmailAsync(usuario.Email, "Recuperar Senha", $"Clique no link para recuperar sua senha: {link}");
 
         return Ok(new { message = "Seu E-mail de redefinição de senha foi enviado" });
     }
@@ -55,14 +55,14 @@ public class LoginsController : ControllerBase
 
         return Ok(new { message = "Senha redefinida com sucesso." });
     }
- 
-  //Codigo temporario para teste
+
+    //Codigo temporario para teste
     public class ResetPassword
     {
         public string senha { get; set; }
         public string confirmacaoSenha { get; set; }
     }
-    public class RecuperarSenha
+    public class RecuperarSenhaRequest
     {
         public string Email { get; set; }
     }
