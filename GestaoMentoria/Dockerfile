@@ -7,7 +7,7 @@ EXPOSE 80
 EXPOSE 443
 
 # instalar o sdk e build nossa aplicação gerando os binarios
-FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 COPY ["GestaoMentoria.csproj", "GestaoMentoria/"]
 RUN dotnet restore "GestaoMentoria/GestaoMentoria.csproj"
