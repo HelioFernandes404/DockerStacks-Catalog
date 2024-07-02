@@ -1,0 +1,38 @@
+version: "3.4"
+
+services:
+  api:
+    image: gestaomentoria:latest
+    container_name: myapi
+    build:
+      context: ../GestaoMentoria
+      dockerfile: ./Dockerfile
+    depends_on:
+      - database
+    ports:
+      - "5001:80"
+      - "5002:443"
+    restart: always
+    environment:
+      DB_HOST: database
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: "http://+:80;https://+:443"
+      ASPNETCORE_Kestrel__Certificates__Default__Password: "1234"
+      ASPNETCORE_Kestrel__Certificates__Default__Path: "/root/.aspnet/https/aspnetapp.pfx"
+      ConnectionStrings__DefaultConnection: "Host=dpg-cps4hoij1k6c738herc0-a.virginia-postgres.render.com;Username=gtmuser;Password=zZQpokGPhZS3o8DBjSCf7yAESOOtokIb;Database=gestaodementoriapostgresql;Port=5432"
+
+  database:
+    image: postgres:latest
+    container_name: mydatabase
+    volumes:
+      - db-volume:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: gtmuser
+      POSTGRES_PASSWORD: zZQpokGPhZS3o8DBjSCf7yAESOOtokIb
+      POSTGRES_DB: gestaodementoriapostgresql
+    ports:
+      - "5432:5432"
+    restart: always
+
+volumes:
+  db-volume:
