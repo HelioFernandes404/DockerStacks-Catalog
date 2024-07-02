@@ -69,6 +69,11 @@ jobs:
 
       - name: voltar 2 pastas atrás e listar o conteúdo
         run: cd ../../
+
+      - name: List contents
+        run: pwd
+      - name: List contents
+        run: ls
       
       - name: entrar no diretorio do backend
         run: cd gestao-mentoria-backend
