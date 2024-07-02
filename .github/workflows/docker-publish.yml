@@ -67,9 +67,6 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
-      - name: ls -pwd
-        run: ls -pwd
-
       - name: voltar 2 pastas atrás e listar o conteúdo
         run: cd ../../ && ls -pwd
 
