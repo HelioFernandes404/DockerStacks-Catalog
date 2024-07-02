@@ -17,7 +17,7 @@ public class LoginsController : ControllerBase
     }
 
     [HttpPost("recuperar-senha")]
-    public async Task<ActionResult> RecuperarSenha(Usuario loginUser)
+    public async Task<ActionResult> RecuperarSenha(RecuperarSenhaRequest loginUser)
     {
         var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.Email == loginUser.Email);
 
