@@ -13,7 +13,7 @@
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
-
+\gestao-mentoria-backend\.github\workflows\
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
